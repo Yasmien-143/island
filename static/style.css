@@ -103,23 +103,76 @@ button.primary:focus {
   box-shadow: 0 16px 30px rgba(15, 32, 72, 0.14);
 }
 
-.checkbox-row {
+.radio-row {
   display: flex;
-  align-items: center;
-  gap: 0.65rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
   color: #334e68;
-  margin-top: 0.5rem;
 }
 
-.checkbox-row input {
-  width: 1.05rem;
-  height: 1.05rem;
+.radio-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.9rem;
+  background: rgba(15, 61, 145, 0.06);
+  border: 1px solid rgba(15, 61, 145, 0.12);
+  cursor: pointer;
+}
+
+.radio-row input {
+  accent-color: #0f3d91;
+}
+
+.vote-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  background: #f8fafc;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  margin-bottom: 0.8rem;
+  color: #243b53;
+}
+
+.item-list li span {
+  flex: 1 1 auto;
+  margin-right: 1rem;
+}
+
+.ghost {
+  border: 1px solid rgba(15, 61, 145, 0.18);
+  background: transparent;
+  color: #0f3d91;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.ghost:hover,
+.ghost:focus {
+  background: rgba(15, 61, 145, 0.08);
+  transform: translateY(-1px);
 }
 
 ul {
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
 li {
