@@ -4,28 +4,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Island Meet - June 10, 2026</title>
-    <style>
-      body{font-family: Arial, sans-serif;max-width:800px;margin:2rem auto;padding:0 1rem}
-      .card{border:1px solid #ddd;padding:1rem;margin-bottom:1rem;border-radius:6px}
-      form{display:flex;gap:0.5rem;flex-wrap:wrap}
-      input[type=text]{flex:1;padding:0.5rem}
-      button{padding:0.5rem 0.8rem}
-      ul{padding-left:1.2rem}
-    </style>
+    <link rel="stylesheet" href="/static/style.css">
   </head>
   <body>
-    <h1>Island Meet</h1>
-    <p><strong>Date:</strong> {{ date }}</p>
+    <div class="page-shell">
+      <header>
+        <h1>Island Meet</h1>
+        <p class="lead"><strong>Date:</strong> {{ date }}</p>
+      </header>
 
-    <div class="card">
-      <h2>Who's coming?</h2>
+      <div class="card">
+        <h2>Who's coming?</h2>
       <p><strong>Yes:</strong> {{ yes }} — <strong>No:</strong> {{ no }}</p>
 
-      <form action="/vote" method="post">
+      <form action="/vote" method="post" class="form-row">
         <input type="text" name="name" placeholder="Your name">
-        <label><input type="checkbox" name="available"> I am available</label>
-        <button type="submit">Submit vote</button>
+        <button type="submit" class="primary">Submit vote</button>
       </form>
+      <div class="checkbox-row">
+        <input type="checkbox" name="available" id="available">
+        <label for="available">I am available</label>
+      </div>
 
       <h3>Recent votes</h3>
       <ul>
@@ -54,8 +53,9 @@
       </ul>
     </div>
 
-    <footer style="text-align:center;color:#666;margin-top:2rem">
+    <footer>
       <small>Simple app — data stored in the connected database.</small>
     </footer>
+    </div>
   </body>
 </html>
