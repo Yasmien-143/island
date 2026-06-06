@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Island Meet - June 10, 2026</title>
+    <style>
+      body{font-family: Arial, sans-serif;max-width:800px;margin:2rem auto;padding:0 1rem}
+      .card{border:1px solid #ddd;padding:1rem;margin-bottom:1rem;border-radius:6px}
+      form{display:flex;gap:0.5rem;flex-wrap:wrap}
+      input[type=text]{flex:1;padding:0.5rem}
+      button{padding:0.5rem 0.8rem}
+      ul{padding-left:1.2rem}
+    </style>
+  </head>
+  <body>
+    <h1>Island Meet</h1>
+    <p><strong>Date:</strong> {{ date }}</p>
+
+    <div class="card">
+      <h2>Who's coming?</h2>
+      <p><strong>Yes:</strong> {{ yes }} — <strong>No:</strong> {{ no }}</p>
+
+      <form action="/vote" method="post">
+        <input type="text" name="name" placeholder="Your name">
+        <label><input type="checkbox" name="available"> I am available</label>
+        <button type="submit">Submit vote</button>
+      </form>
+
+      <h3>Recent votes</h3>
+      <ul>
+        {% for v in votes %}
+          <li>{{ v.name }} — {{ 'Yes' if v.available else 'No' }} ({{ v.created_at.strftime('%Y-%m-%d %H:%M') }})</li>
+        {% else %}
+          <li>No votes yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>What to bring</h2>
+      <form action="/item" method="post">
+        <input type="text" name="item" placeholder="Item to bring">
+        <button type="submit">Add</button>
+      </form>
+
+      <h3>List</h3>
+      <ul>
+        {% for it in items %}
+          <li>{{ it.name }}</li>
+        {% else %}
+          <li>No items yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <footer style="text-align:center;color:#666;margin-top:2rem">
+      <small>Simple app — data stored in the connected database.</small>
+    </footer>
+  </body>
+</html>

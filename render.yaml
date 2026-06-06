@@ -1,0 +1,15 @@
+# Example Render service configuration (optional).
+# You can import this in Render or use the UI to create the web service.
+services:
+  - type: web
+    name: island-mini
+    env: python
+    plan: free
+    repo: <replace-with-your-repo-url>
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: island-mini-db
+          property: CONNECTION_URL
