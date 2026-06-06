@@ -28,8 +28,7 @@ class Item(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
-@app.before_serving
-def create_tables():
+with app.app_context():
     db.create_all()
 
 
